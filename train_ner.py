@@ -8,17 +8,26 @@ import spacy
 
 # training data
 TRAIN_DATA = [
-    ('Who is Shaka Khan?', {
-        'entities': [(7, 17, 'PERSON')]
-    }),
-    ('I like London and Berlin.', {
-        'entities': [(7, 13, 'LOC'), (18, 24, 'LOC')]
-    }),
     ('The food is very good', {
-        'entities':[(4,8, 'FOOD')]
+        'entities':[(4,8, 'FD')]
     }),
     ('The service is very good', {
-        'entities':[(4,11, 'SERVICE')]
+        'entities':[(4,11, 'SER')]
+    }),
+    ('the service was terrible', {
+        'entities':[(4,11, 'SER')]
+    }),
+    ('because of the poor service, I am', {
+        'entities':[(20,27, 'SER')]
+    }),
+    ('The room had a sea facing view', {
+        'entities': [(15,30, 'RV')]
+    }),
+    ('The room was facing towards garden',{
+        'entities':[(13,34, 'RV')]
+    }),
+    ('The room had a city view',{
+        'entities':[(15,24,'RV')]
     })
 ]
 
@@ -27,7 +36,7 @@ TRAIN_DATA = [
     model=("Model name. Defaults to blank 'en' model.", "option", "m", str),
     output_dir=("Optional output directory", "option", "o", Path),
     n_iter=("Number of training iterations", "option", "n", int))
-def main(model='./model', output_dir='./model', n_iter=100):
+def main(model=None, output_dir='./model', n_iter=100):
     """Load the model, set up the pipeline and train the entity recognizer."""
     if model is not None:
         nlp = spacy.load(model)  # load existing spaCy model
