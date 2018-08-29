@@ -4,33 +4,7 @@ import plac
 import random
 from pathlib import Path
 import spacy
-
-
-# training data
-TRAIN_DATA = [
-    ('The food is very good', {
-        'entities':[(4,8, 'FD')]
-    }),
-    ('The service is very good', {
-        'entities':[(4,11, 'SER')]
-    }),
-    ('the service was terrible', {
-        'entities':[(4,11, 'SER')]
-    }),
-    ('because of the poor service, I am', {
-        'entities':[(20,27, 'SER')]
-    }),
-    ('The room had a sea facing view', {
-        'entities': [(15,30, 'RV')]
-    }),
-    ('The room was facing towards garden',{
-        'entities':[(13,34, 'RV')]
-    }),
-    ('The room had a city view',{
-        'entities':[(15,24,'RV')]
-    })
-]
-
+from corpus import TRAIN_DATA as TRAIN_DATA
 
 @plac.annotations(
     model=("Model name. Defaults to blank 'en' model.", "option", "m", str),
